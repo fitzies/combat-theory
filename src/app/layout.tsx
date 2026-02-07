@@ -6,6 +6,7 @@ import ConvexClientProvider from "@/components/convex-client-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import LayoutShell from "@/components/layout-shell";
 import UserExistsCheck from "@/components/user-exists-check";
+import { shadcn } from '@clerk/themes'
 
 const geistSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -23,27 +24,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider
-      appearance={{ cssLayerName: "clerk" }}
-      signUpForceRedirectUrl="/account-setup"
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="dark"
+      enableSystem
+      disableTransitionOnChange
     >
-      <ConvexClientProvider>
-        <html lang="en" suppressHydrationWarning>
-          <body
-            className={`${geistSans.variable} antialiased`}
-          >
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="dark"
-              enableSystem
-              disableTransitionOnChange
+      <ClerkProvider
+        appearance={{ theme: shadcn }}
+        signUpForceRedirectUrl="/account-setup"
+      >
+        <ConvexClientProvider>
+          <html lang="en" suppressHydrationWarning>
+            <body
+              className={`${geistSans.variable} antialiased`}
             >
               <UserExistsCheck />
               <LayoutShell>{children}</LayoutShell>
-            </ThemeProvider>
-          </body>
-        </html>
-      </ConvexClientProvider>
-    </ClerkProvider>
+            </body>
+          </html>
+        </ConvexClientProvider>
+      </ClerkProvider>
+    </ThemeProvider>
   );
 }
