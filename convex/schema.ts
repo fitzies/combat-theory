@@ -90,4 +90,30 @@ export default defineSchema({
   })
     .index("byUserId", ["userId"])
     .index("byUserAndCourse", ["userId", "courseId"]),
+
+  breakdowns: defineTable({
+    title: v.string(),
+    description: v.string(),
+    imageUrl: v.optional(v.string()),
+    type: v.union(
+      v.literal("Discussion"),
+      v.literal("Spar"),
+      v.literal("Technique"),
+      v.literal("Breakdown"),
+    ),
+    martialArt: v.union(
+      v.literal("BJJ"),
+      v.literal("Boxing"),
+      v.literal("MMA"),
+    ),
+    instructorId: v.id("instructors"),
+    duration: v.string(),
+  }).index("byInstructorId", ["instructorId"]),
+
+  breakdownWatches: defineTable({
+    userId: v.id("users"),
+    breakdownId: v.id("breakdowns"),
+  })
+    .index("byUserId", ["userId"])
+    .index("byUserAndBreakdown", ["userId", "breakdownId"]),
 });

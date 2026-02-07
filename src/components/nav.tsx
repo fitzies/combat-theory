@@ -25,7 +25,7 @@ import UserMenu from "./user-menu";
 const navigationLinks = [
   { href: "/", icon: HouseIcon, label: "Home" },
   { href: "/courses", icon: Book, label: "Courses" },
-  { href: "/breakdowns", icon: Sparkle, label: "Breakdowns", disabled: true },
+  { href: "/breakdowns", icon: Sparkle, label: "Breakdowns" },
 ];
 
 export default function Nav() {
