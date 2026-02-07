@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
-import { useMutation, useQuery, useConvexAuth } from "convex/react";
+import { useMutation, useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -84,7 +84,6 @@ function getAge(dob: Date): number {
 export default function AccountSetupForm() {
   const router = useRouter();
   const { user, isSignedIn, isLoaded } = useUser();
-  const { isAuthenticated, isLoading: isAuthLoading } = useConvexAuth();
   const createUser = useMutation(api.users.createUser);
 
   const [step, setStep] = useState(1);
@@ -200,7 +199,7 @@ export default function AccountSetupForm() {
     )
       return;
 
-    if (!isLoaded || !isSignedIn || !user || !isAuthenticated) {
+    if (!isLoaded || !isSignedIn || !user) {
       console.error("User not authenticated");
       return;
     }
@@ -394,11 +393,11 @@ export default function AccountSetupForm() {
                         belts: prev.belts.map((b) =>
                           b.discipline === discipline
                             ? {
-                                discipline,
-                                belt,
-                                stripe: stripe > 0 ? stripe : undefined,
-                                dan: dan > 0 ? dan : undefined,
-                              }
+                              discipline,
+                              belt,
+                              stripe: stripe > 0 ? stripe : undefined,
+                              dan: dan > 0 ? dan : undefined,
+                            }
                             : b,
                         ),
                       }));
@@ -512,7 +511,7 @@ export default function AccountSetupForm() {
         ) : (
           <Button
             onClick={handleSubmit}
-            disabled={!canProceed() || isSubmitting || isAuthLoading || !isAuthenticated}
+            disabled={!canProceed() || isSubmitting}
           >
             {isSubmitting ? (
               <>
