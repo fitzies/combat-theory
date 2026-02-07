@@ -1,0 +1,398 @@
+[
+  {
+    "description": "Learn the fundamentals of Brazilian Jiu-Jitsu including basic positions, submissions, and escapes. Perfect for complete beginners looking to start their BJJ journey.",
+    "difficulty": "Beginner",
+    "duration": "8 weeks",
+    "instructorId": "jd77k4854sheqt98nas9pqmgjd80pht4",
+    "martialArt": "BJJ",
+    "title": "BJJ Fundamentals: Your First Steps",
+    "imageUrl": "https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?w=800&h=450&fit=crop",
+    "volumes": [
+      {
+        "name": "Basic Positions & Movement",
+        "durationMinutes": 120,
+        "sections": [
+          { "title": "Introduction to BJJ", "durationMinutes": 15 },
+          { "title": "Basic Stance & Movement", "durationMinutes": 20 },
+          { "title": "Guard Position Basics", "durationMinutes": 25 },
+          { "title": "Mount & Side Control", "durationMinutes": 30 },
+          { "title": "Back Control Fundamentals", "durationMinutes": 30 }
+        ]
+      },
+      {
+        "name": "Essential Submissions",
+        "durationMinutes": 135,
+        "sections": [
+          { "title": "Armbar from Guard", "durationMinutes": 25 },
+          { "title": "Kimura Basics", "durationMinutes": 20 },
+          { "title": "Rear Naked Choke Introduction", "durationMinutes": 30 },
+          { "title": "Americana from Mount", "durationMinutes": 30 },
+          { "title": "Submission Defense", "durationMinutes": 30 }
+        ]
+      },
+      {
+        "name": "Escapes & Survival",
+        "durationMinutes": 150,
+        "sections": [
+          { "title": "Mount Escapes", "durationMinutes": 30 },
+          { "title": "Side Control Escapes", "durationMinutes": 35 },
+          { "title": "Back Escapes", "durationMinutes": 30 },
+          { "title": "Guard Retention Basics", "durationMinutes": 30 },
+          { "title": "Survival Principles", "durationMinutes": 25 }
+        ]
+      }
+    ]
+  },
+  {
+    "description": "Master the guard position - one of BJJ's most fundamental positions. Learn sweeps, submissions, and guard retention techniques.",
+    "difficulty": "Beginner",
+    "duration": "6 weeks",
+    "instructorId": "jd7072wq6sm04kzvgwhkte8yrs80pkz5",
+    "martialArt": "BJJ",
+    "title": "Guard Fundamentals",
+    "imageUrl": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=800&h=450&fit=crop",
+    "volumes": [
+      {
+        "name": "Closed Guard Basics",
+        "durationMinutes": 140,
+        "sections": [
+          { "title": "Closed Guard Fundamentals", "durationMinutes": 30 },
+          { "title": "Breaking Posture", "durationMinutes": 25 },
+          { "title": "Basic Sweeps", "durationMinutes": 35 },
+          { "title": "Submissions from Guard", "durationMinutes": 30 },
+          { "title": "Guard Retention", "durationMinutes": 20 }
+        ]
+      },
+      {
+        "name": "Open Guard Introduction",
+        "durationMinutes": 130,
+        "sections": [
+          { "title": "Open Guard Concepts", "durationMinutes": 25 },
+          { "title": "Butterfly Guard Basics", "durationMinutes": 30 },
+          { "title": "Sitting Guard", "durationMinutes": 25 },
+          { "title": "Open Guard Sweeps", "durationMinutes": 30 },
+          { "title": "Transitions Between Guards", "durationMinutes": 20 }
+        ]
+      }
+    ]
+  },
+  {
+    "description": "Deep dive into side control escapes, transitions, and submissions. Build a solid foundation for escaping and attacking from side control.",
+    "difficulty": "Intermediate",
+    "duration": "6 weeks",
+    "instructorId": "jd7fg6he04zxmd5de64qtk6ew180qt5y",
+    "martialArt": "BJJ",
+    "title": "Side Control Mastery",
+    "imageUrl": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=450&fit=crop",
+    "volumes": [
+      {
+        "name": "Side Control Attacks",
+        "durationMinutes": 145,
+        "sections": [
+          { "title": "Side Control Fundamentals", "durationMinutes": 25 },
+          { "title": "Knee on Belly Transitions", "durationMinutes": 30 },
+          { "title": "Americana & Kimura", "durationMinutes": 30 },
+          { "title": "Arm Triangle Setup", "durationMinutes": 30 },
+          { "title": "Transitioning to Mount", "durationMinutes": 30 }
+        ]
+      },
+      {
+        "name": "Side Control Escapes",
+        "durationMinutes": 150,
+        "sections": [
+          { "title": "Escape Fundamentals", "durationMinutes": 30 },
+          { "title": "Hip Escape Technique", "durationMinutes": 30 },
+          { "title": "Bridge & Roll", "durationMinutes": 25 },
+          { "title": "Underhook Escapes", "durationMinutes": 30 },
+          { "title": "Escaping to Guard", "durationMinutes": 35 }
+        ]
+      }
+    ]
+  },
+  {
+    "description": "Learn the art of passing the guard with pressure, speed, and technique. Essential skills for advancing your BJJ game.",
+    "difficulty": "Intermediate",
+    "duration": "8 weeks",
+    "instructorId": "jd77k4854sheqt98nas9pqmgjd80pht4",
+    "martialArt": "BJJ",
+    "title": "Guard Passing Essentials",
+    "imageUrl": "https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?w=800&h=450&fit=crop",
+    "volumes": [
+      {
+        "name": "Pressure Passing",
+        "durationMinutes": 160,
+        "sections": [
+          { "title": "Pressure Passing Concepts", "durationMinutes": 30 },
+          { "title": "Knee Cut Pass", "durationMinutes": 35 },
+          { "title": "Over-Under Pass", "durationMinutes": 30 },
+          { "title": "Stack Pass", "durationMinutes": 30 },
+          { "title": "Maintaining Pressure", "durationMinutes": 35 }
+        ]
+      },
+      {
+        "name": "Speed & Mobility Passing",
+        "durationMinutes": 155,
+        "sections": [
+          { "title": "Speed Passing Fundamentals", "durationMinutes": 30 },
+          { "title": "Torreando Pass", "durationMinutes": 30 },
+          { "title": "X-Pass", "durationMinutes": 30 },
+          { "title": "Leg Drag", "durationMinutes": 30 },
+          { "title": "Combining Passes", "durationMinutes": 35 }
+        ]
+      },
+      {
+        "name": "Passing Open Guards",
+        "durationMinutes": 145,
+        "sections": [
+          { "title": "De La Riva Passing", "durationMinutes": 30 },
+          { "title": "Spider Guard Passing", "durationMinutes": 30 },
+          { "title": "Butterfly Guard Passing", "durationMinutes": 30 },
+          { "title": "Lasso Guard Passing", "durationMinutes": 30 },
+          { "title": "Troubleshooting Common Problems", "durationMinutes": 25 }
+        ]
+      }
+    ]
+  },
+  {
+    "description": "Explore the back position - the most dominant position in BJJ. Learn how to take the back, maintain control, and finish with chokes.",
+    "difficulty": "Intermediate",
+    "duration": "6 weeks",
+    "instructorId": "jd7072wq6sm04kzvgwhkte8yrs80pkz5",
+    "martialArt": "BJJ",
+    "title": "Back Control & Rear Naked Choke",
+    "imageUrl": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=800&h=450&fit=crop",
+    "volumes": [
+      {
+        "name": "Taking the Back",
+        "durationMinutes": 150,
+        "sections": [
+          { "title": "Back Take Fundamentals", "durationMinutes": 30 },
+          { "title": "From Turtle Position", "durationMinutes": 30 },
+          { "title": "From Guard", "durationMinutes": 30 },
+          { "title": "From Side Control", "durationMinutes": 30 },
+          { "title": "Back Take Drills", "durationMinutes": 30 }
+        ]
+      },
+      {
+        "name": "Back Control & Finishes",
+        "durationMinutes": 160,
+        "sections": [
+          { "title": "Maintaining Back Control", "durationMinutes": 30 },
+          { "title": "Rear Naked Choke Mechanics", "durationMinutes": 35 },
+          { "title": "Bow & Arrow Choke", "durationMinutes": 30 },
+          { "title": "Armbar from Back", "durationMinutes": 30 },
+          { "title": "Back Control Escapes", "durationMinutes": 35 }
+        ]
+      }
+    ]
+  },
+  {
+    "description": "Master the mount position with proper control, transitions, and high-percentage submissions. Learn to dominate from the top.",
+    "difficulty": "Intermediate",
+    "duration": "6 weeks",
+    "instructorId": "jd7fg6he04zxmd5de64qtk6ew180qt5y",
+    "martialArt": "BJJ",
+    "title": "Mount Position Domination",
+    "imageUrl": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=450&fit=crop",
+    "volumes": [
+      {
+        "name": "Mount Control & Attacks",
+        "durationMinutes": 155,
+        "sections": [
+          { "title": "Mount Fundamentals", "durationMinutes": 30 },
+          { "title": "Maintaining Mount", "durationMinutes": 30 },
+          { "title": "Armbar from Mount", "durationMinutes": 35 },
+          { "title": "Americana & Kimura", "durationMinutes": 30 },
+          { "title": "Ezekiel Choke", "durationMinutes": 30 }
+        ]
+      },
+      {
+        "name": "Mount Escapes & Transitions",
+        "durationMinutes": 145,
+        "sections": [
+          { "title": "Mount Escape Basics", "durationMinutes": 30 },
+          { "title": "Bridge & Roll Escape", "durationMinutes": 30 },
+          { "title": "Elbow Escape", "durationMinutes": 30 },
+          { "title": "Transitioning to Back", "durationMinutes": 30 },
+          { "title": "Preventing Escapes", "durationMinutes": 25 }
+        ]
+      }
+    ]
+  },
+  {
+    "description": "Advanced leg lock system covering entries, control, and finishes. Learn the modern leg lock game used by elite competitors.",
+    "difficulty": "Advanced",
+    "duration": "10 weeks",
+    "instructorId": "jd77k4854sheqt98nas9pqmgjd80pht4",
+    "martialArt": "BJJ",
+    "title": "Leg Lock System",
+    "imageUrl": "https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?w=800&h=450&fit=crop",
+    "volumes": [
+      {
+        "name": "Leg Lock Fundamentals",
+        "durationMinutes": 180,
+        "sections": [
+          { "title": "Leg Lock Safety", "durationMinutes": 25 },
+          { "title": "Ashi Garami Positions", "durationMinutes": 40 },
+          { "title": "Heel Hook Mechanics", "durationMinutes": 40 },
+          { "title": "Knee Bar Basics", "durationMinutes": 35 },
+          { "title": "Ankle Lock Fundamentals", "durationMinutes": 40 }
+        ]
+      },
+      {
+        "name": "Leg Lock Entries",
+        "durationMinutes": 200,
+        "sections": [
+          { "title": "Single Leg X Entry", "durationMinutes": 40 },
+          { "title": "Outside Ashi Entry", "durationMinutes": 40 },
+          { "title": "50/50 Entry", "durationMinutes": 40 },
+          { "title": "Saddle Entry", "durationMinutes": 40 },
+          { "title": "Entry Combinations", "durationMinutes": 40 }
+        ]
+      },
+      {
+        "name": "Leg Lock Finishing",
+        "durationMinutes": 190,
+        "sections": [
+          { "title": "Heel Hook Finishing", "durationMinutes": 40 },
+          { "title": "Knee Bar Finishing", "durationMinutes": 35 },
+          { "title": "Ankle Lock Finishing", "durationMinutes": 35 },
+          { "title": "Leg Lock Defense", "durationMinutes": 40 },
+          { "title": "Leg Lock Escapes", "durationMinutes": 40 }
+        ]
+      },
+      {
+        "name": "Advanced Leg Lock Concepts",
+        "durationMinutes": 180,
+        "sections": [
+          { "title": "Leg Lock Transitions", "durationMinutes": 40 },
+          { "title": "Countering Leg Lock Defense", "durationMinutes": 35 },
+          { "title": "Leg Lock Chains", "durationMinutes": 35 },
+          { "title": "No-Gi Leg Locks", "durationMinutes": 35 },
+          { "title": "Competition Strategies", "durationMinutes": 35 }
+        ]
+      }
+    ]
+  },
+  {
+    "description": "Develop a complete open guard game including De La Riva, Spider Guard, and Lasso Guard. Learn to control distance and attack.",
+    "difficulty": "Advanced",
+    "duration": "8 weeks",
+    "instructorId": "jd7072wq6sm04kzvgwhkte8yrs80pkz5",
+    "martialArt": "BJJ",
+    "title": "Advanced Open Guard",
+    "imageUrl": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=800&h=450&fit=crop",
+    "volumes": [
+      {
+        "name": "De La Riva Guard",
+        "durationMinutes": 170,
+        "sections": [
+          { "title": "De La Riva Fundamentals", "durationMinutes": 35 },
+          { "title": "DLR Sweeps", "durationMinutes": 35 },
+          { "title": "Berimbolo Basics", "durationMinutes": 35 },
+          { "title": "DLR Submissions", "durationMinutes": 35 },
+          { "title": "DLR Transitions", "durationMinutes": 30 }
+        ]
+      },
+      {
+        "name": "Spider Guard",
+        "durationMinutes": 165,
+        "sections": [
+          { "title": "Spider Guard Setup", "durationMinutes": 30 },
+          { "title": "Spider Guard Sweeps", "durationMinutes": 35 },
+          { "title": "Spider Guard Submissions", "durationMinutes": 35 },
+          { "title": "Lasso Guard Integration", "durationMinutes": 35 },
+          { "title": "Spider Guard Retention", "durationMinutes": 30 }
+        ]
+      },
+      {
+        "name": "Modern Open Guard Systems",
+        "durationMinutes": 175,
+        "sections": [
+          { "title": "Worm Guard Concepts", "durationMinutes": 35 },
+          { "title": "Lapel Guard", "durationMinutes": 35 },
+          { "title": "Collar Sleeve Guard", "durationMinutes": 35 },
+          { "title": "Open Guard Transitions", "durationMinutes": 35 },
+          { "title": "Building Your Game", "durationMinutes": 35 }
+        ]
+      }
+    ]
+  },
+  {
+    "description": "Learn the art of no-gi grappling with focus on wrestling takedowns, scrambles, and submission techniques without the gi.",
+    "difficulty": "Intermediate",
+    "duration": "8 weeks",
+    "instructorId": "jd7fg6he04zxmd5de64qtk6ew180qt5y",
+    "martialArt": "BJJ",
+    "title": "No-Gi Fundamentals",
+    "imageUrl": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=450&fit=crop",
+    "volumes": [
+      {
+        "name": "No-Gi Basics",
+        "durationMinutes": 150,
+        "sections": [
+          { "title": "No-Gi vs Gi Differences", "durationMinutes": 30 },
+          { "title": "Grip Fighting", "durationMinutes": 30 },
+          { "title": "No-Gi Guard", "durationMinutes": 30 },
+          { "title": "No-Gi Passing", "durationMinutes": 30 },
+          { "title": "No-Gi Submissions", "durationMinutes": 30 }
+        ]
+      },
+      {
+        "name": "Wrestling for BJJ",
+        "durationMinutes": 160,
+        "sections": [
+          { "title": "Takedown Fundamentals", "durationMinutes": 35 },
+          { "title": "Single Leg Takedown", "durationMinutes": 30 },
+          { "title": "Double Leg Takedown", "durationMinutes": 30 },
+          { "title": "Defending Takedowns", "durationMinutes": 30 },
+          { "title": "Takedown to Submission", "durationMinutes": 35 }
+        ]
+      },
+      {
+        "name": "No-Gi Scrambles",
+        "durationMinutes": 155,
+        "sections": [
+          { "title": "Scramble Fundamentals", "durationMinutes": 30 },
+          { "title": "Positional Scrambles", "durationMinutes": 35 },
+          { "title": "Submission Scrambles", "durationMinutes": 30 },
+          { "title": "Back Take Scrambles", "durationMinutes": 30 },
+          { "title": "Scramble Drills", "durationMinutes": 30 }
+        ]
+      }
+    ]
+  },
+  {
+    "description": "Master the triangle choke from multiple positions and setups. Learn entries, adjustments, and finishing mechanics for this iconic BJJ submission.",
+    "difficulty": "Intermediate",
+    "duration": "4 weeks",
+    "instructorId": "jd77k4854sheqt98nas9pqmgjd80pht4",
+    "martialArt": "BJJ",
+    "title": "Triangle Choke Mastery",
+    "imageUrl": "https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?w=800&h=450&fit=crop",
+    "volumes": [
+      {
+        "name": "Triangle Choke Fundamentals",
+        "durationMinutes": 140,
+        "sections": [
+          { "title": "Triangle Choke Mechanics", "durationMinutes": 30 },
+          { "title": "Triangle from Guard", "durationMinutes": 30 },
+          { "title": "Triangle Setup & Entries", "durationMinutes": 30 },
+          { "title": "Triangle Finishing Details", "durationMinutes": 30 },
+          { "title": "Common Mistakes", "durationMinutes": 20 }
+        ]
+      },
+      {
+        "name": "Advanced Triangle Setups",
+        "durationMinutes": 130,
+        "sections": [
+          { "title": "Triangle from Mount", "durationMinutes": 25 },
+          { "title": "Triangle from Side Control", "durationMinutes": 25 },
+          { "title": "Triangle Transitions", "durationMinutes": 30 },
+          { "title": "Triangle Defense & Counters", "durationMinutes": 30 },
+          { "title": "Triangle Combinations", "durationMinutes": 20 }
+        ]
+      }
+    ]
+  }
+]

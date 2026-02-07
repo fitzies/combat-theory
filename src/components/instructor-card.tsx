@@ -32,10 +32,10 @@ export default function InstructorCard({
 
   return (
     <Dialog>
-      <DialogTrigger className="flex items-start justify-start">
-        <Card className="overflow-hidden p-0 bg-transparent border-transparent shadow-none rounded-none">
+      <DialogTrigger className="flex items-start justify-start w-full h-full">
+        <Card className="overflow-hidden p-0 bg-transparent border-transparent shadow-none rounded-none w-full h-[320px] flex flex-col">
           <motion.div
-            className="relative bg-muted aspect-square w-full cursor-pointer rounded-sm"
+            className="relative bg-muted aspect-square w-full cursor-pointer rounded-sm flex-shrink-0"
             whileHover="hover"
             initial="initial"
           >
@@ -76,9 +76,9 @@ export default function InstructorCard({
               </motion.div>
             </motion.div>
           </motion.div>
-          <div className="space-y-1">
-            <div className="flex items-center justify-start gap-2">
-              <h3 className="font-semibold text-lg text-left">
+          <div className="space-y-1 flex-1 flex flex-col min-h-[80px]">
+            <div className="flex items-center justify-start gap-2 flex-wrap">
+              <h3 className="font-semibold text-lg text-left line-clamp-1">
                 {instructor.name}
               </h3>
               {instructor.disciplines.map((discipline) => (
