@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import { Doc } from "../../convex/_generated/dataModel";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
+import { SignUpButton } from "@clerk/nextjs";
 import {
   Dialog,
   DialogContent,
@@ -216,6 +217,12 @@ export default function CourseCard({ course }: CourseCardProps) {
             >
               🎉 Start Course
             </Button>
+          ) : free && !hasAccess ? (
+            <SignUpButton mode="modal" forceRedirectUrl="/account-setup">
+              <Button className="w-full text-center">
+                Sign up to access
+              </Button>
+            </SignUpButton>
           ) : (
             <Button className="w-full text-center">
               Subscribe to {course.teacher} from ${course.price?.toFixed(2)}/month
