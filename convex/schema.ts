@@ -12,8 +12,20 @@ export default defineSchema({
     disciplines: v.array(v.string()),
     yearsOfExperience: v.number(),
     goals: v.array(v.string()),
+    belts: v.optional(
+      v.array(
+        v.object({
+          discipline: v.string(),
+          belt: v.string(),
+          stripe: v.optional(v.number()),
+          dan: v.optional(v.number()),
+        }),
+      ),
+    ),
     onboardingComplete: v.boolean(),
-  }).index("byClerkId", ["clerkId"]),
+  })
+    .index("byClerkId", ["clerkId"])
+    .index("byUsername", ["username"]),
 
   instructors: defineTable({
     name: v.string(),
@@ -65,6 +77,16 @@ export default defineSchema({
   purchases: defineTable({
     userId: v.id("users"),
     courseId: v.id("courses"),
+  })
+    .index("byUserId", ["userId"])
+    .index("byUserAndCourse", ["userId", "courseId"]),
+
+  enrollments: defineTable({
+    userId: v.id("users"),
+    courseId: v.id("courses"),
+    startedAt: v.number(),
+    completedSections: v.array(v.string()),
+    completedAt: v.optional(v.number()),
   })
     .index("byUserId", ["userId"])
     .index("byUserAndCourse", ["userId", "courseId"]),

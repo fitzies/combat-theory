@@ -96,7 +96,7 @@ export default function InstructorCard({
         </Card>
       </DialogTrigger>
 
-      <DialogContent className="min-w-3xl max-h-[85vh] overflow-y-auto p-0">
+      <DialogContent className="md:min-w-3xl max-h-[85vh] overflow-y-auto p-0">
         {/* Instructor image header */}
         {instructor.imageUrl ? (
           <img

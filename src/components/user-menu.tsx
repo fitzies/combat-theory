@@ -78,10 +78,10 @@ export default function UserMenu({ user, hasPassword }: UserMenuProps) {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
-            <Link href="/account" className="flex items-center justify-between w-full">
+            <Link href="/profile" className="flex items-center justify-between w-full">
               <span className="flex items-center gap-2">
                 <User aria-hidden="true" className="opacity-60" size={16} />
-                <span>Account</span>
+                <span>Profile</span>
               </span>
               {/* {!hasPassword && (
                 <span className="h-2 w-2 rounded-full bg-destructive" />

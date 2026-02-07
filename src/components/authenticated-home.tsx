@@ -4,21 +4,24 @@ import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import CourseCard from "@/components/course-card";
 import InstructorCard from "@/components/instructor-card";
+import { Progress } from "@/components/ui/progress";
 import { Spinner } from "@/components/ui/spinner";
 
 export default function AuthenticatedHome() {
   const latestCourses = useQuery(api.courses.getLatestCourses);
   const instructors = useQuery(api.instructors.getInstructors);
   const freeCourses = useQuery(api.courses.getFreeCourses);
+  const enrollments = useQuery(api.enrollments.getUserEnrollments);
 
   const isLoading =
     latestCourses === undefined ||
     instructors === undefined ||
-    freeCourses === undefined;
+    freeCourses === undefined ||
+    enrollments === undefined;
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-[50vh]">
+      <div className="flex items-center justify-center min-h-[95vh]">
         <Spinner className="size-6" />
       </div>
     );
@@ -26,6 +29,35 @@ export default function AuthenticatedHome() {
 
   return (
     <div className="container mx-auto px-4 py-8 space-y-12">
+      {/* My Courses */}
+      {enrollments.length > 0 && (
+        <section className="space-y-6">
+          <div>
+            <h2 className="text-2xl font-bold">My Courses</h2>
+            <p className="text-muted-foreground text-sm">
+              Continue where you left off
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {enrollments
+              .filter((enrollment): enrollment is NonNullable<typeof enrollment> => enrollment !== null)
+              .slice(0, 4)
+              .map((enrollment) => (
+                <div key={enrollment._id} className="space-y-2">
+                  <CourseCard course={enrollment.course} />
+                  {/* <div className="flex items-center justify-between text-xs text-muted-foreground px-1">
+                    <span>{enrollment.progress}% complete</span>
+                    <span>
+                      {enrollment.completedSections.length}/{enrollment.totalSections} sections
+                    </span>
+                  </div> */}
+                  {/* <Progress value={enrollment.progress} className="h-1.5" /> */}
+                </div>
+              ))}
+          </div>
+        </section>
+      )}
+
       {/* Latest Courses */}
       <section className="space-y-6">
         <div>
@@ -36,7 +68,7 @@ export default function AuthenticatedHome() {
         </div>
         {latestCourses.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {latestCourses.map((course) => (
+            {latestCourses.slice(0, 8).map((course) => (
               <CourseCard key={course._id} course={course} />
             ))}
           </div>
@@ -75,14 +107,14 @@ export default function AuthenticatedHome() {
       {/* Free Videos */}
       <section className="space-y-6">
         <div>
-          <h2 className="text-2xl font-bold">Free Videos</h2>
+          <h2 className="text-2xl font-bold">Free Courses</h2>
           <p className="text-muted-foreground text-sm">
             Start learning for free
           </p>
         </div>
         {freeCourses.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {freeCourses.map((course) => (
+            {freeCourses.slice(0, 4).map((course) => (
               <CourseCard key={course._id} course={course} />
             ))}
           </div>

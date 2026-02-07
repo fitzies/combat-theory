@@ -4,7 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import ConvexClientProvider from "@/components/convex-client-provider";
 import { ThemeProvider } from "@/components/theme-provider";
-import Nav from "@/components/nav";
+import LayoutShell from "@/components/layout-shell";
 import UserExistsCheck from "@/components/user-exists-check";
 
 const geistSans = DM_Sans({
@@ -13,7 +13,7 @@ const geistSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Combat Theory",
+  title: "Fight Meta",
   description: "Master grappling, striking, and complete MMA through structured, step-by-step systems. Combat Theory breaks down complex techniques into clear, actionable lessons designed to remove guesswork and accelerate real skill development.",
 };
 
@@ -39,8 +39,7 @@ export default function RootLayout({
               disableTransitionOnChange
             >
               <UserExistsCheck />
-              <Nav />
-              {children}
+              <LayoutShell>{children}</LayoutShell>
             </ThemeProvider>
           </body>
         </html>

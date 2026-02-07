@@ -3,9 +3,12 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Play, Lock, Clock } from "lucide-react";
+import { Progress } from "@/components/ui/progress";
+import { Play, Lock, Clock, Circle, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Doc } from "../../convex/_generated/dataModel";
+import { useQuery, useMutation } from "convex/react";
+import { api } from "../../convex/_generated/api";
 import {
   Dialog,
   DialogContent,
@@ -51,6 +54,15 @@ export default function CourseCard({ course }: CourseCardProps) {
   const isNew = isNewCourse(course._creationTime);
   const free = isFree(course.price);
   const totalVolumes = course.volumes?.length ?? 0;
+
+  const hasAccess = useQuery(api.purchases.hasAccessToCourse, {
+    courseId: course._id,
+  });
+  const enrollment = useQuery(api.enrollments.getEnrollment, {
+    courseId: course._id,
+  });
+  const enroll = useMutation(api.enrollments.enrollInCourse);
+  const toggleSection = useMutation(api.enrollments.markSectionComplete);
 
   return (
     <Dialog>
@@ -154,7 +166,7 @@ export default function CourseCard({ course }: CourseCardProps) {
         </Card>
       </DialogTrigger>
 
-      <DialogContent className="min-w-3xl max-h-[85vh] overflow-y-auto p-0">
+      <DialogContent className="md:min-w-3xl max-h-[85vh] overflow-y-auto p-0">
         {/* Course image header */}
         {course.imageUrl ? (
           <img
@@ -184,14 +196,31 @@ export default function CourseCard({ course }: CourseCardProps) {
             </p>
           </DialogHeader>
 
-          {/* Subscribe CTA */}
-          <Button className="w-full text-center">
-            {free ? (
-              <>🎉 This course is <span className="text-green-600 dark:text-green-400">free</span> — start watching now</>
-            ) : (
-              <>Subscribe to {course.teacher} from ${course.price?.toFixed(2)}/month</>
-            )}
-          </Button>
+          {/* CTA */}
+          {hasAccess && enrollment ? (
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-muted-foreground">
+                  {enrollment.progress}% complete
+                </span>
+                <span className="text-muted-foreground">
+                  {enrollment.completedSections.length}/{enrollment.totalSections} sections
+                </span>
+              </div>
+              <Progress value={enrollment.progress} className="h-2" />
+            </div>
+          ) : hasAccess && !enrollment ? (
+            <Button
+              className="w-full text-center"
+              onClick={() => enroll({ courseId: course._id })}
+            >
+              🎉 Start Course
+            </Button>
+          ) : (
+            <Button className="w-full text-center">
+              Subscribe to {course.teacher} from ${course.price?.toFixed(2)}/month
+            </Button>
+          )}
 
           {/* Volume breakdown */}
           {course.volumes && course.volumes.length > 0 && (
@@ -219,19 +248,47 @@ export default function CourseCard({ course }: CourseCardProps) {
                     <AccordionContent>
                       {volume.sections.length > 0 ? (
                         <div className="space-y-2 pt-2">
-                          {volume.sections.map((section, si) => (
-                            <div
-                              key={si}
-                              className="flex items-center justify-between px-2 py-1.5 rounded-md hover:bg-muted/50"
-                            >
-                              <span className="text-sm text-muted-foreground">
-                                {section.title}
-                              </span>
-                              <span className="text-xs text-muted-foreground tabular-nums">
-                                {formatDuration(section.durationMinutes)}
-                              </span>
-                            </div>
-                          ))}
+                          {volume.sections.map((section, si) => {
+                            const sectionId = `${vi}-${si}`;
+                            const isCompleted =
+                              enrollment?.completedSections.includes(sectionId) ??
+                              false;
+
+                            return (
+                              <div
+                                key={si}
+                                className="flex items-center justify-between px-2 py-1.5 rounded-md hover:bg-muted/50"
+                              >
+                                <div className="flex items-center gap-2">
+                                  {enrollment ? (
+                                    <button
+                                      onClick={() =>
+                                        toggleSection({
+                                          courseId: course._id,
+                                          sectionId,
+                                        })
+                                      }
+                                      className="shrink-0"
+                                    >
+                                      {isCompleted ? (
+                                        <CheckCircle2 className="w-4 h-4 text-primary" />
+                                      ) : (
+                                        <Circle className="w-4 h-4 text-muted-foreground" />
+                                      )}
+                                    </button>
+                                  ) : null}
+                                  <span
+                                    className={`text-sm ${isCompleted ? "line-through text-muted-foreground/50" : "text-muted-foreground"}`}
+                                  >
+                                    {section.title}
+                                  </span>
+                                </div>
+                                <span className="text-xs text-muted-foreground tabular-nums">
+                                  {formatDuration(section.durationMinutes)}
+                                </span>
+                              </div>
+                            );
+                          })}
                         </div>
                       ) : (
                         <p className="text-sm text-muted-foreground pt-2">
