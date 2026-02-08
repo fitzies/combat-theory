@@ -42,7 +42,7 @@ export const createCourseCheckout = action({
     const session = await stripe.checkout.sessions.create(
       {
         mode: "payment",
-        payment_method_types: ["card", "paynow"],
+        payment_method_types: ["card"],
         line_items: [
           {
             price_data: {
@@ -104,7 +104,7 @@ export const createSubscriptionCheckout = action({
     const session = await stripe.checkout.sessions.create(
       {
         mode: "subscription",
-        payment_method_types: ["card", "paynow"],
+        payment_method_types: ["card"],
         line_items: [
           {
             price_data: {
