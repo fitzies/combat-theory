@@ -69,10 +69,7 @@ export const handleWebhookEvent = internalAction({
 
       case "invoice.payment_failed": {
         const invoice = event.data.object as Stripe.Invoice;
-        const subscriptionId =
-          typeof invoice.subscription === "string"
-            ? invoice.subscription
-            : invoice.subscription?.id;
+        const subscriptionId = (invoice as any).subscription as string | null;
         if (subscriptionId) {
           await ctx.runMutation(
             internal.purchases.internalDeactivateSubscription,
