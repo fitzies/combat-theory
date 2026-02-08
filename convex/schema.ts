@@ -34,7 +34,6 @@ export default defineSchema({
     imageUrl: v.optional(v.string()),
     subscriptionPrice: v.number(),
     disciplines: v.array(v.string()),
-    stripeConnectedAccountId: v.optional(v.string()),
   }).index("byName", ["name"]),
 
   courses: defineTable({

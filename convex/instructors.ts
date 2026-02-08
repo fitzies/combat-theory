@@ -26,15 +26,3 @@ export const getInstructor = query({
     return await ctx.db.get(args.instructorId);
   },
 });
-
-export const setStripeConnectedAccount = mutation({
-  args: {
-    instructorId: v.id("instructors"),
-    stripeConnectedAccountId: v.string(),
-  },
-  handler: async (ctx, args) => {
-    await ctx.db.patch(args.instructorId, {
-      stripeConnectedAccountId: args.stripeConnectedAccountId,
-    });
-  },
-});

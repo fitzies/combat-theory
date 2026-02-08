@@ -28,16 +28,7 @@ export const createCourseCheckout = action({
       throw new Error("Course is free — no checkout needed");
     }
 
-    const instructor = await ctx.runQuery(api.instructors.getInstructor, {
-      instructorId: course.instructorId,
-    });
-    if (!instructor) throw new Error("Instructor not found");
-    if (!instructor.stripeConnectedAccountId) {
-      throw new Error("Instructor has not set up payments");
-    }
-
     const priceInCents = Math.round(course.price * 100);
-    const applicationFee = Math.round(priceInCents * 0.1); // 10% platform fee
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
@@ -56,10 +47,6 @@ export const createCourseCheckout = action({
         },
       ],
       payment_intent_data: {
-        application_fee_amount: applicationFee,
-        transfer_data: {
-          destination: instructor.stripeConnectedAccountId,
-        },
         metadata: {
           type: "course_purchase",
           courseId: args.courseId,
@@ -95,12 +82,8 @@ export const createSubscriptionCheckout = action({
       instructorId: args.instructorId,
     });
     if (!instructor) throw new Error("Instructor not found");
-    if (!instructor.stripeConnectedAccountId) {
-      throw new Error("Instructor has not set up payments");
-    }
 
     const priceInCents = Math.round(instructor.subscriptionPrice * 100);
-    const applicationFee = Math.round(priceInCents * 0.1); // 10% platform fee
 
     const session = await stripe.checkout.sessions.create({
       mode: "subscription",
@@ -119,10 +102,6 @@ export const createSubscriptionCheckout = action({
         },
       ],
       subscription_data: {
-        application_fee_percent: 10,
-        transfer_data: {
-          destination: instructor.stripeConnectedAccountId,
-        },
         metadata: {
           type: "instructor_subscription",
           instructorId: args.instructorId,
