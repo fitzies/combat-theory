@@ -119,8 +119,8 @@ export default function Nav() {
                 <NavigationMenuItem key={link.label}>
                   <NavigationMenuLink
                     active={isActive}
-                    className={`flex-row items-center gap-2 py-1.5 font-medium text-foreground ${link.disabled ? "text-muted-foreground hover:bg-transparent! cursor-default!" : "hover:text-primary"}`}
-                    href={!link.disabled ? link.href : "#"}
+                    className="flex-row items-center gap-2 py-1.5 font-medium text-foreground hover:text-primary"
+                    href={link.href}
                   >
                     <span>{link.label}</span>
                   </NavigationMenuLink>
