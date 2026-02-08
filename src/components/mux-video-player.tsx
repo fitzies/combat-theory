@@ -27,19 +27,19 @@ export default function MuxVideoPlayer({
       onEnded={onEnded}
       className="w-full aspect-video rounded-lg"
       style={{
-        "--media-primary-color": "#2a2a2a",
-        "--media-secondary-color": "rgba(0, 0, 0, 0.75)",
-        "--media-control-background": "transparent",
-        "--media-control-hover-background": "rgba(255, 255, 255, 0.1)",
-        "--media-range-track-background": "rgba(255, 255, 255, 0.2)",
+        "--media-primary-color": "rgba(42, 42, 42, 0.9)",
+        "--media-secondary-color": "rgba(0, 0, 0, 0.6)",
+        "--media-control-background": "rgba(0, 0, 0, 0.4)",
+        "--media-control-hover-background": "rgba(255, 255, 255, 0.2)",
+        "--media-range-track-background": "rgba(255, 255, 255, 0.3)",
         "--media-range-thumb-background": "#ffe0c2",
-        "--volume-range": "none",
-        "--pip-button": "none",
-        "--captions-button": "none",
-        "--airplay-button": "none",
-        "--cast-button": "none",
-        "--rendition-selectmenu": "none",
-        "--duration-display": "none",
+        "--volume-range": "initial",
+        "--pip-button": "initial",
+        "--captions-button": "initial",
+        "--airplay-button": "initial",
+        "--cast-button": "initial",
+        "--rendition-selectmenu": "initial",
+        "--duration-display": "initial",
       }}
     />
     </div>

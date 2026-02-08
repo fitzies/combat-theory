@@ -181,24 +181,25 @@ export default function CourseCard({ course }: CourseCardProps) {
 
         <div className="px-6 pb-6 space-y-6">
           <DialogHeader>
-            <div className="flex items-center gap-2 flex-wrap">
-              <Badge variant="outline">{course.difficulty}</Badge>
-              <Badge variant="outline">{course.martialArt}</Badge>
+            <div className="flex items-center gap-2 flex-wrap mb-4">
+              <Badge variant="default">{course.difficulty}</Badge>
+              <Badge variant="default">{course.martialArt}</Badge>
               {totalVolumes > 0 && (
                 <Badge variant="secondary">
                   {totalVolumes} {totalVolumes === 1 ? "volume" : "volumes"}
                 </Badge>
               )}
             </div>
-            <DialogTitle className="text-2xl">{course.title}</DialogTitle>
-            <DialogDescription>{course.description}</DialogDescription>
-            <p className="text-sm text-muted-foreground">
-              Taught by <span className="font-medium text-foreground">{course.teacher}</span> · {course.duration}
+            <DialogTitle className="text-3xl mb-2">{course.title}</DialogTitle>
+            <DialogDescription className="text-base text-muted-foreground">{course.description}</DialogDescription>
+            <p className="text-md text-muted-foreground mt-2">
+              Taught by <span className="font-bold text-foreground">{course.teacher}</span> · {course.duration}
             </p>
           </DialogHeader>
 
           {/* CTA */}
-          {hasAccess && enrollment ? (
+          <Card className="p-4 space-y-4">
+            {hasAccess && enrollment ? (
             <div className="space-y-3">
               <div className="space-y-2">
                 <div className="flex items-center justify-between text-sm">
@@ -224,9 +225,9 @@ export default function CourseCard({ course }: CourseCardProps) {
                 className="w-full text-center"
                 onClick={() => enroll({ courseId: course._id })}
               >
-                🎉 Start Course
+                Start Course
               </Button>
-              <Button asChild variant="outline" className="w-full">
+              <Button asChild variant="secondary" className="w-full">
                 <Link href={`/courses/${course._id}`}>View Course</Link>
               </Button>
             </div>
@@ -241,11 +242,11 @@ export default function CourseCard({ course }: CourseCardProps) {
               Subscribe to {course.teacher} from ${course.price?.toFixed(2)}/month
             </Button>
           )}
-
+          </Card>
           {/* Volume breakdown */}
           {course.volumes && course.volumes.length > 0 && (
             <div className="space-y-4">
-              <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+              <h4 className="text-xl font-bold mb-4">
                 Volumes
               </h4>
               <Accordion type="single" collapsible className="w-full">
@@ -288,7 +289,7 @@ export default function CourseCard({ course }: CourseCardProps) {
                                     )
                                   ) : null}
                                   <span
-                                    className={`text-sm ${isCompleted ? "line-through text-muted-foreground/50" : "text-muted-foreground"}`}
+                                    className={`text-base ${isCompleted ? "line-through text-muted-foreground/70" : "text-foreground"}`}
                                   >
                                     {section.title}
                                   </span>

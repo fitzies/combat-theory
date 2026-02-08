@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../../../../convex/_generated/api";
 import { Id } from "../../../../convex/_generated/dataModel";
@@ -39,6 +39,21 @@ export default function CourseWatchPage() {
   const markComplete = useMutation(api.enrollments.markSectionComplete);
 
   const [activeSectionId, setActiveSectionId] = useState<string | null>(null);
+
+  // Auto-select the first uncompleted playable section on load
+  useEffect(() => {
+    if (!course || !hasAccess || activeSectionId) return;
+    const allSecs = course.volumes?.flatMap((volume, vi) =>
+      volume.sections.map((section, si) => ({ id: `${vi}-${si}`, ...section })),
+    ) ?? [];
+    if (allSecs.length === 0) return;
+    const firstPlayable = enrollment
+      ? allSecs.find(
+        (s) => s.muxPlaybackId && !enrollment.completedSections.includes(s.id),
+      ) ?? allSecs.find((s) => s.muxPlaybackId)
+      : allSecs.find((s) => s.muxPlaybackId);
+    if (firstPlayable) setActiveSectionId(firstPlayable.id);
+  }, [course, enrollment, hasAccess, activeSectionId]);
 
   if (course === undefined || hasAccess === undefined) {
     return (

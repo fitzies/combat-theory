@@ -1,12 +1,13 @@
 {
-  "name": "combat-theory",
+  "name": "fight-meta",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "upload-course": "tsx --env-file=.env.production scripts/upload-course.ts"
+    "upload-course": "tsx --env-file=.env.production scripts/upload-course.ts",
+    "upload-instructor": "tsx --env-file=.env.production scripts/upload-instructor.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.1.0",

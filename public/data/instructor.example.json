@@ -1,0 +1,7 @@
+{
+  "name": "John Danaher",
+  "bio": "World-renowned BJJ coach known for developing systematic approaches to grappling. Head instructor at New Wave Jiu-Jitsu.",
+  "imageUrl": "https://example.com/instructor-photo.jpg",
+  "subscriptionPrice": 25,
+  "disciplines": ["BJJ"]
+}
