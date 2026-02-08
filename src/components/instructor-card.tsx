@@ -14,8 +14,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { useQuery } from "convex/react";
+import { useQuery, useAction } from "convex/react";
 import { api } from "../../convex/_generated/api";
+import { useState } from "react";
 
 type InstructorCardProps = {
   instructor: Doc<"instructors">;
@@ -29,6 +30,8 @@ export default function InstructorCard({
   const courses = useQuery(api.courses.getCoursesByInstructor, {
     instructorId: instructor._id,
   });
+  const createSubscriptionCheckout = useAction(api.stripe.createSubscriptionCheckout);
+  const [isCheckoutLoading, setIsCheckoutLoading] = useState(false);
 
   return (
     <Dialog>
@@ -126,8 +129,26 @@ export default function InstructorCard({
           </DialogHeader>
 
           {/* Subscription price */}
-          <Button className="w-full text-center">
-            Subscribe to {instructor.name} from ${instructor.subscriptionPrice.toFixed(2)}/month
+          <Button
+            className="w-full text-center"
+            disabled={isCheckoutLoading}
+            onClick={async () => {
+              setIsCheckoutLoading(true);
+              try {
+                const url = await createSubscriptionCheckout({
+                  instructorId: instructor._id,
+                  successUrl: window.location.href,
+                  cancelUrl: window.location.href,
+                });
+                window.location.href = url;
+              } catch {
+                setIsCheckoutLoading(false);
+              }
+            }}
+          >
+            {isCheckoutLoading
+              ? "Redirecting..."
+              : `Subscribe to ${instructor.name} from $${instructor.subscriptionPrice.toFixed(2)}/month`}
           </Button>
 
           {/* Instructor courses */}

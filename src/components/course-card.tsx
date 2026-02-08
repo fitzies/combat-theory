@@ -7,8 +7,9 @@ import { Progress } from "@/components/ui/progress";
 import { Play, Lock, Clock, Circle, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Doc } from "../../convex/_generated/dataModel";
-import { useQuery, useMutation } from "convex/react";
+import { useQuery, useMutation, useAction } from "convex/react";
 import { api } from "../../convex/_generated/api";
+import { useState } from "react";
 import { SignUpButton } from "@clerk/nextjs";
 import Link from "next/link";
 import {
@@ -64,6 +65,8 @@ export default function CourseCard({ course }: CourseCardProps) {
     courseId: course._id,
   });
   const enroll = useMutation(api.enrollments.enrollInCourse);
+  const createSubscriptionCheckout = useAction(api.stripe.createSubscriptionCheckout);
+  const [isCheckoutLoading, setIsCheckoutLoading] = useState(false);
 
   return (
     <Dialog>
@@ -238,8 +241,26 @@ export default function CourseCard({ course }: CourseCardProps) {
               </Button>
             </SignUpButton>
           ) : (
-            <Button className="w-full text-center">
-              Subscribe to {course.teacher} from ${course.price?.toFixed(2)}/month
+            <Button
+              className="w-full text-center"
+              disabled={isCheckoutLoading}
+              onClick={async () => {
+                setIsCheckoutLoading(true);
+                try {
+                  const url = await createSubscriptionCheckout({
+                    instructorId: course.instructorId,
+                    successUrl: window.location.href,
+                    cancelUrl: window.location.href,
+                  });
+                  window.location.href = url;
+                } catch {
+                  setIsCheckoutLoading(false);
+                }
+              }}
+            >
+              {isCheckoutLoading
+                ? "Redirecting..."
+                : `Subscribe to ${course.teacher} from $${course.price?.toFixed(2)}/month`}
             </Button>
           )}
           </Card>

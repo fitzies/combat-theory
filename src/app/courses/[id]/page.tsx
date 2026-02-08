@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useQuery, useMutation } from "convex/react";
+import { useQuery, useMutation, useAction } from "convex/react";
 import { api } from "../../../../convex/_generated/api";
 import { Id } from "../../../../convex/_generated/dataModel";
 import MuxVideoPlayer from "@/components/mux-video-player";
@@ -37,8 +37,10 @@ export default function CourseWatchPage() {
   const enrollment = useQuery(api.enrollments.getEnrollment, { courseId });
   const enroll = useMutation(api.enrollments.enrollInCourse);
   const markComplete = useMutation(api.enrollments.markSectionComplete);
+  const createSubscriptionCheckout = useAction(api.stripe.createSubscriptionCheckout);
 
   const [activeSectionId, setActiveSectionId] = useState<string | null>(null);
+  const [isCheckoutLoading, setIsCheckoutLoading] = useState(false);
 
   // Auto-select the first uncompleted playable section on load
   useEffect(() => {
@@ -180,9 +182,28 @@ export default function CourseWatchPage() {
               Start Course
             </Button>
           ) : course.price && course.price > 0 ? (
-            <Button className="w-fit" variant="secondary">
+            <Button
+              className="w-fit"
+              variant="secondary"
+              disabled={isCheckoutLoading}
+              onClick={async () => {
+                setIsCheckoutLoading(true);
+                try {
+                  const url = await createSubscriptionCheckout({
+                    instructorId: course.instructorId,
+                    successUrl: window.location.href,
+                    cancelUrl: window.location.href,
+                  });
+                  window.location.href = url;
+                } catch {
+                  setIsCheckoutLoading(false);
+                }
+              }}
+            >
               <Lock className="w-4 h-4 mr-2" />
-              Subscribe to {course.teacher} — ${course.price.toFixed(2)}/mo
+              {isCheckoutLoading
+                ? "Redirecting..."
+                : `Subscribe to ${course.teacher} — $${course.price.toFixed(2)}/mo`}
             </Button>
           ) : (
             <SignUpButton mode="modal" forceRedirectUrl="/account-setup">

@@ -23,6 +23,7 @@ export default defineSchema({
       ),
     ),
     onboardingComplete: v.boolean(),
+    stripeCustomerId: v.optional(v.string()),
   })
     .index("byClerkId", ["clerkId"])
     .index("byUsername", ["username"]),
@@ -33,6 +34,7 @@ export default defineSchema({
     imageUrl: v.optional(v.string()),
     subscriptionPrice: v.number(),
     disciplines: v.array(v.string()),
+    stripeConnectedAccountId: v.optional(v.string()),
   }).index("byName", ["name"]),
 
   courses: defineTable({
@@ -71,9 +73,12 @@ export default defineSchema({
     userId: v.id("users"),
     instructorId: v.id("instructors"),
     active: v.boolean(),
+    stripeSubscriptionId: v.optional(v.string()),
+    stripeCustomerId: v.optional(v.string()),
   })
     .index("byUserId", ["userId"])
-    .index("byUserAndInstructor", ["userId", "instructorId"]),
+    .index("byUserAndInstructor", ["userId", "instructorId"])
+    .index("byStripeSubscriptionId", ["stripeSubscriptionId"]),
 
   purchases: defineTable({
     userId: v.id("users"),
