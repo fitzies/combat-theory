@@ -24,27 +24,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="dark"
-      enableSystem
-      disableTransitionOnChange
+    <ClerkProvider
+      appearance={{ theme: shadcn }}
+      signUpForceRedirectUrl="/account-setup"
     >
-      <ClerkProvider
-        appearance={{ theme: shadcn }}
-        signUpForceRedirectUrl="/account-setup"
-      >
-        <ConvexClientProvider>
-          <html lang="en" suppressHydrationWarning>
-            <body
-              className={`${geistSans.variable} antialiased`}
+      <ConvexClientProvider>
+        <html lang="en" suppressHydrationWarning>
+          <body
+            className={`${geistSans.variable} antialiased`}
+          >
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="dark"
+              enableSystem
+              disableTransitionOnChange
             >
               <UserExistsCheck />
               <LayoutShell>{children}</LayoutShell>
-            </body>
-          </html>
-        </ConvexClientProvider>
-      </ClerkProvider>
-    </ThemeProvider>
+            </ThemeProvider>
+          </body>
+        </html>
+      </ConvexClientProvider>
+    </ClerkProvider>
   );
 }

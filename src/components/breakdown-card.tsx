@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { Doc } from "../../convex/_generated/dataModel";
 import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
+import Link from "next/link";
 
 type EnrichedBreakdown = Doc<"breakdowns"> & { teacher: string };
 
@@ -20,6 +21,7 @@ export default function BreakdownCard({ breakdown }: BreakdownCardProps) {
   });
 
   return (
+    <Link href={`/breakdowns/${breakdown._id}`}>
     <Card className="overflow-hidden p-0 bg-transparent border-transparent rounded-none shadow-none cursor-pointer">
       <motion.div
         className="relative bg-muted aspect-video w-full cursor-pointer rounded-sm"
@@ -101,5 +103,6 @@ export default function BreakdownCard({ breakdown }: BreakdownCardProps) {
         </div>
       </div>
     </Card>
+    </Link>
   );
 }

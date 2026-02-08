@@ -1,0 +1,48 @@
+{
+  "title": "BJJ Fundamentals",
+  "description": "A complete beginner course covering positions, submissions, and escapes.",
+  "imageUrl": "https://example.com/course-thumbnail.jpg",
+  "difficulty": "Beginner",
+  "martialArt": "BJJ",
+  "instructorId": "<paste convex instructor _id here>",
+  "duration": "5h 10m",
+  "price": 0,
+  "volumes": [
+    {
+      "name": "Overview",
+      "durationMinutes": 25,
+      "sections": [
+        {
+          "title": "Introduction to BJJ",
+          "durationMinutes": 10,
+          "videoFile": "./videos/overview/intro.mp4"
+        },
+        {
+          "title": "Core Principles",
+          "durationMinutes": 8,
+          "videoFile": "./videos/overview/core-principles.mp4"
+        },
+        {
+          "title": "Positional Hierarchy",
+          "durationMinutes": 7
+        }
+      ]
+    },
+    {
+      "name": "Basic Positions",
+      "durationMinutes": 90,
+      "sections": [
+        {
+          "title": "Mount",
+          "durationMinutes": 20,
+          "videoFile": "./videos/positions/mount.mp4"
+        },
+        {
+          "title": "Side Control",
+          "durationMinutes": 20,
+          "videoFile": "./videos/positions/side-control.mp4"
+        }
+      ]
+    }
+  ]
+}

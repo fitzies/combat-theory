@@ -53,12 +53,9 @@ export const markSectionComplete = mutation({
       .unique();
     if (!enrollment) throw new Error("Not enrolled in this course");
 
-    const alreadyDone = enrollment.completedSections.includes(args.sectionId);
+    if (enrollment.completedSections.includes(args.sectionId)) return;
 
-    // Toggle: if already complete, remove it; otherwise add it
-    const updatedSections = alreadyDone
-      ? enrollment.completedSections.filter((s) => s !== args.sectionId)
-      : [...enrollment.completedSections, args.sectionId];
+    const updatedSections = [...enrollment.completedSections, args.sectionId];
 
     // Count total sections in the course to check completion
     const course = await ctx.db.get(args.courseId);

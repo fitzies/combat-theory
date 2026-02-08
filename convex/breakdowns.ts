@@ -1,6 +1,17 @@
 import { v } from "convex/values";
 import { query, mutation } from "./_generated/server";
 
+export const getBreakdownById = query({
+  args: { breakdownId: v.id("breakdowns") },
+  handler: async (ctx, args) => {
+    const breakdown = await ctx.db.get(args.breakdownId);
+    if (!breakdown) return null;
+
+    const instructor = await ctx.db.get(breakdown.instructorId);
+    return { ...breakdown, teacher: instructor?.name ?? "Unknown" };
+  },
+});
+
 export const getLatestBreakdowns = query({
   handler: async (ctx) => {
     const breakdowns = await ctx.db.query("breakdowns").order("desc").take(8);

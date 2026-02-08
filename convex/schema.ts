@@ -60,6 +60,7 @@ export default defineSchema({
           v.object({
             title: v.string(),
             durationMinutes: v.number(),
+            muxPlaybackId: v.optional(v.string()),
           }),
         ),
       }),
@@ -108,6 +109,7 @@ export default defineSchema({
     ),
     instructorId: v.id("instructors"),
     duration: v.string(),
+    muxPlaybackId: v.optional(v.string()),
   }).index("byInstructorId", ["instructorId"]),
 
   breakdownWatches: defineTable({

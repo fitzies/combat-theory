@@ -1,5 +1,53 @@
 import { v } from "convex/values";
-import { query } from "./_generated/server";
+import { query, mutation } from "./_generated/server";
+
+export const createCourse = mutation({
+  args: {
+    title: v.string(),
+    description: v.string(),
+    imageUrl: v.optional(v.string()),
+    difficulty: v.union(
+      v.literal("Beginner"),
+      v.literal("Intermediate"),
+      v.literal("Advanced"),
+    ),
+    martialArt: v.union(
+      v.literal("BJJ"),
+      v.literal("Boxing"),
+      v.literal("MMA"),
+    ),
+    instructorId: v.id("instructors"),
+    duration: v.string(),
+    price: v.optional(v.number()),
+    volumes: v.array(
+      v.object({
+        name: v.string(),
+        durationMinutes: v.number(),
+        sections: v.array(
+          v.object({
+            title: v.string(),
+            durationMinutes: v.number(),
+            muxPlaybackId: v.optional(v.string()),
+          }),
+        ),
+      }),
+    ),
+  },
+  handler: async (ctx, args) => {
+    return await ctx.db.insert("courses", args);
+  },
+});
+
+export const getCourseById = query({
+  args: { courseId: v.id("courses") },
+  handler: async (ctx, args) => {
+    const course = await ctx.db.get(args.courseId);
+    if (!course) return null;
+
+    const instructor = await ctx.db.get(course.instructorId);
+    return { ...course, teacher: instructor?.name ?? "Unknown" };
+  },
+});
 
 export const getLatestCourses = query({
   handler: async (ctx) => {

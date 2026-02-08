@@ -10,6 +10,7 @@ import { Doc } from "../../convex/_generated/dataModel";
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { SignUpButton } from "@clerk/nextjs";
+import Link from "next/link";
 import {
   Dialog,
   DialogContent,
@@ -63,7 +64,6 @@ export default function CourseCard({ course }: CourseCardProps) {
     courseId: course._id,
   });
   const enroll = useMutation(api.enrollments.enrollInCourse);
-  const toggleSection = useMutation(api.enrollments.markSectionComplete);
 
   return (
     <Dialog>
@@ -199,24 +199,37 @@ export default function CourseCard({ course }: CourseCardProps) {
 
           {/* CTA */}
           {hasAccess && enrollment ? (
-            <div className="space-y-2">
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">
-                  {enrollment.progress}% complete
-                </span>
-                <span className="text-muted-foreground">
-                  {enrollment.completedSections.length}/{enrollment.totalSections} sections
-                </span>
+            <div className="space-y-3">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-muted-foreground">
+                    {enrollment.progress}% complete
+                  </span>
+                  <span className="text-muted-foreground">
+                    {enrollment.completedSections.length}/{enrollment.totalSections} sections
+                  </span>
+                </div>
+                <Progress value={enrollment.progress} className="h-2" />
               </div>
-              <Progress value={enrollment.progress} className="h-2" />
+              <Button asChild className="w-full">
+                <Link href={`/courses/${course._id}`}>
+                  <Play className="w-4 h-4 mr-2" />
+                  Continue Watching
+                </Link>
+              </Button>
             </div>
           ) : hasAccess && !enrollment ? (
-            <Button
-              className="w-full text-center"
-              onClick={() => enroll({ courseId: course._id })}
-            >
-              🎉 Start Course
-            </Button>
+            <div className="space-y-2">
+              <Button
+                className="w-full text-center"
+                onClick={() => enroll({ courseId: course._id })}
+              >
+                🎉 Start Course
+              </Button>
+              <Button asChild variant="outline" className="w-full">
+                <Link href={`/courses/${course._id}`}>View Course</Link>
+              </Button>
+            </div>
           ) : free && !hasAccess ? (
             <SignUpButton mode="modal" forceRedirectUrl="/account-setup">
               <Button className="w-full text-center">
@@ -268,21 +281,11 @@ export default function CourseCard({ course }: CourseCardProps) {
                               >
                                 <div className="flex items-center gap-2">
                                   {enrollment ? (
-                                    <button
-                                      onClick={() =>
-                                        toggleSection({
-                                          courseId: course._id,
-                                          sectionId,
-                                        })
-                                      }
-                                      className="shrink-0"
-                                    >
-                                      {isCompleted ? (
-                                        <CheckCircle2 className="w-4 h-4 text-primary" />
-                                      ) : (
-                                        <Circle className="w-4 h-4 text-muted-foreground" />
-                                      )}
-                                    </button>
+                                    isCompleted ? (
+                                      <CheckCircle2 className="w-4 h-4 shrink-0 text-primary" />
+                                    ) : (
+                                      <Circle className="w-4 h-4 shrink-0 text-muted-foreground" />
+                                    )
                                   ) : null}
                                   <span
                                     className={`text-sm ${isCompleted ? "line-through text-muted-foreground/50" : "text-muted-foreground"}`}
