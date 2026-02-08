@@ -14,6 +14,7 @@ export default function MuxVideoPlayer({
   onEnded,
 }: MuxVideoPlayerProps) {
   return (
+    <div onContextMenu={(e) => e.preventDefault()}>
     <MuxPlayer
       playbackId={playbackId}
       streamType="on-demand"
@@ -41,5 +42,6 @@ export default function MuxVideoPlayer({
         "--duration-display": "none",
       }}
     />
+    </div>
   );
 }
